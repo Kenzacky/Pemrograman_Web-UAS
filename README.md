@@ -125,47 +125,6 @@ Backend berjalan menggunakan **PHP Native + MySQL**.
 
 ---
 
-## 📂 **Struktur Folder Project**
-
-```
-/WorkSpot-UNESA
-│
-├── assets/
-│   ├── images/
-│   └── icons/
-│
-├── css/
-│   └── style.css
-│
-├── js/
-│   └── main.js
-│
-├── pages/
-│   ├── beranda.php
-│   ├── detail.php
-│   ├── saran.php
-│   ├── login.php
-│   └── tentang.php
-│
-├── dashboard/
-│   ├── user/
-│   ├── admin/
-│   └── super-admin/
-│
-├── backend/
-│   ├── config.php
-│   ├── auth/
-│   ├── tempat/
-│   ├── kategori/
-│   ├── saran/
-│   └── users/
-│
-├── database.sql
-└── README.md
-```
-
----
-
 ## 👥 **Pembagian Tugas**
 
 ### 🎨 **Syawailie Syaf Anhar — 24091397053**

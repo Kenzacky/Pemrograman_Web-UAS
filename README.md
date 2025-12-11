@@ -2,7 +2,6 @@
 
 # 🌟 **WorkSpot UNESA — Website Rekomendasi Tempat Nugas Mahasiswa**
 
-<div align="center">
 
 💻 **Project UAS Pemrograman Web**
 📍 Universitas Negeri Surabaya (UNESA)

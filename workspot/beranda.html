@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkSpot UNESA - Beranda</title>
+    <link rel="stylesheet" href="web.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-container">
+           <div class="logo">
+  <img src="images/logo work.png" alt="WorkSpot UNESA Logo" class="logo-img">
+  <span class="logo-text">WorkSpot UNESA</span>
+</div>
+
+            <ul class="nav-links">
+                <li><a href="beranda.html">Beranda</a></li>
+                <li><a href="detail.html">Detail</a></li>
+                <li><a href="saran.html">Saran</a></li>
+                <li><a href="tentang.html">Tentang Kami</a></li>
+                <li><button class="dark-mode-toggle" onclick="toggleDarkMode()">🌗 Dark Mode</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Container -->
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>WorkSpot UNESA</h1>
+            <p>Temukan tempat nugas dan nongkrong nyaman di sekitar UNESA! Dari kafe hingga ruang belajar, semua ada di sini.</p>
+            <div class="hero-buttons">
+                <a href="#placesGrid" class="hero-btn primary">Jelajahi Tempat</a>
+                <a href="saran.html" class="hero-btn secondary">Berikan Saran</a>
+            </div>
+        </section>
+
+        <!-- Search Section -->
+       <section class="search-section">
+             <div class="search-container">
+                 <input type="text" id="searchInput" class="search-input" placeholder="Cari tempat nugas atau nongkrong...">
+                 <span class="material-icons search-icon" onclick="performSearch()">search</span> 
+             </div>
+         <div class="search-results-info" id="searchResultsInfo"></div>
+     </section>
+
+        <!-- Rekomendasi Hari Ini -->
+        <section class="recommendation-section">
+            <h2>Rekomendasi Hari Ini</h2>
+            <div class="recommendation-card" id="recommendationCard">
+                <!-- Akan diisi oleh JavaScript -->
+            </div>
+        </section>
+
+        <!-- Daftar Tempat -->
+        <h2 class="section-title">Daftar Tempat Nugas & Nongkrong</h2>
+        <div class="places-grid" id="placesGrid">
+            <!-- Akan diisi oleh JavaScript dari database -->
+            <div style="grid-column: 1/-1; text-align: center; padding: 3rem;">
+                <div style="display: inline-block; width: 50px; height: 50px; border: 4px solid var(--accent); border-radius: 50%; border-top-color: transparent; animation: spin 1s linear infinite;"></div>
+                <p style="margin-top: 1rem; color: var(--text-secondary);">Memuat data...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 WorkSpot UNESA | Membantu mahasiswa menemukan tempat nugas terbaik</p>
+    </footer>
+
+    <script src="web.js"></script>
+    <script src="beranda-dynamic.js"></script>
+</body>
+</html>

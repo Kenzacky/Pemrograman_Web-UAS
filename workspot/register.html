@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar User - WorkSpot UNESA</title>
+    <link rel="stylesheet" href="web.css">
+    <style>
+        .register-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 2rem;
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .register-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .register-header h1 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .register-header p {
+            color: var(--text-secondary);
+        }
+        
+        .register-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .register-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+        
+        .register-form input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid var(--bg-secondary);
+            border-radius: 10px;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+        
+        .register-form input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        
+        .register-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .register-btn:hover {
+            transform: scale(1.02);
+        }
+        
+        .register-links {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        
+        .register-links a {
+            color: var(--accent);
+            text-decoration: none;
+            display: block;
+            margin: 0.5rem 0;
+        }
+        
+        .register-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .error-message {
+            color: #f44336;
+            background: rgba(244, 67, 54, 0.1);
+            padding: 0.8rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #f44336;
+            display: none;
+        }
+        
+        .error-message.show {
+            display: block;
+        }
+        
+        .success-message {
+            color: #4CAF50;
+            background: rgba(76, 175, 80, 0.1);
+            padding: 0.8rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #4CAF50;
+            display: none;
+        }
+        
+        .success-message.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="images/logo work.png" alt="WorkSpot UNESA Logo">
+                <span>WorkSpot UNESA</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="beranda.html">Beranda</a></li>
+                <li><a href="detail.html">Detail</a></li>
+                <li><a href="saran.html">Saran</a></li>
+                <li><a href="tentang.html">Tentang Kami</a></li>
+                <li><button class="dark-mode-toggle" onclick="toggleDarkMode()">🌗 Dark Mode</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Register Container -->
+    <div class="container">
+        <div class="register-container">
+            <div class="register-header">
+                <h1>Daftar User</h1>
+                <p>Buat akun untuk fitur tambahan</p>
+            </div>
+            
+            <div class="error-message" id="errorMessage"></div>
+            <div class="success-message" id="successMessage"></div>
+            
+            <form class="register-form" id="registerForm">
+                <div class="form-group">
+                    <label for="nama">Nama Lengkap</label>
+                    <input type="text" id="nama" name="nama" placeholder="Nama Anda" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="nama@email.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="••••••••" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirm_password">Konfirmasi Password</label>
+                    <input type="password" id="confirm_password" name="confirm_password" placeholder="••••••••" required>
+                </div>
+                
+                <button type="submit" class="register-btn">Daftar</button>
+            </form>
+            
+            <div class="register-links">
+                <a href="login.html">Sudah punya akun? Login</a>
+                <a href="beranda.html">← Kembali ke Beranda</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 WorkSpot UNESA | Membantu mahasiswa menemukan tempat nugas terbaik</p>
+    </footer>
+
+    <script src="register.js"></script>
+    <script src="web.js"></script>
+</body>
+</html>

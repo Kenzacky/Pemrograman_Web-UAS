@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berikan Saran - WorkSpot UNESA</title>
+    <link rel="stylesheet" href="web.css">
+    <style>
+        .image-preview { margin-top: 0.5rem; }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="images/logo work.png" alt="WorkSpot UNESA Logo">
+                <span>WorkSpot UNESA</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="beranda.html">Beranda</a></li>
+                <li><a href="detail.html">Detail</a></li>
+                <li><a href="saran.html">Saran</a></li>
+                <li><a href="tentang.html">Tentang Kami</a></li>
+                <li><button class="dark-mode-toggle" onclick="toggleDarkMode()">🌗 Dark Mode</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Container -->
+    <div class="container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>Berikan Saran Tempat</h1>
+            <p>Rekomendasikan tempat nugas atau nongkrong favoritmu di sekitar UNESA</p>
+        </div>
+
+        <!-- Form Container -->
+        <div class="form-container">
+            <form id="saranForm" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="namaTempat">Nama Tempat *</label>
+                    <input type="text" id="namaTempat" name="namaTempat" placeholder="Contoh: Brain Coffee">
+                    <div class="error-message" id="errorNama">Nama tempat harus diisi</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lokasi">Lokasi *</label>
+                    <input type="text" id="lokasi" name="lokasi" placeholder="Contoh: Jl. Wonokromo Tangkis No. 52">
+                    <div class="error-message" id="errorLokasi">Lokasi harus diisi</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="kategori">Kategori *</label>
+                    <select id="kategori" name="kategori">
+                        <option value="">Pilih Kategori</option>
+                        <option value="kafe">Kafe</option>
+                        <option value="co-working">Co-working Space</option>
+                        <option value="perpustakaan">Perpustakaan</option>
+                        <option value="restoran">Restoran</option>
+                        <option value="tempat-nongkrong">Tempat Nongkrong</option>
+                    </select>
+                    <div class="error-message" id="errorKategori">Kategori harus dipilih</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="fasilitas">Fasilitas yang Tersedia</label>
+                    <input type="text" id="fasilitas" name="fasilitas" placeholder="Contoh: WiFi, Colokan, AC, Mushola">
+                    <small style="color: var(--text-secondary); font-size: 0.85rem; display: block; margin-top: 0.3rem;">
+                        Pisahkan dengan koma (,)
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label for="jamBuka">Jam Operasional</label>
+                    <input type="text" id="jamBuka" name="jamBuka" placeholder="Contoh: 07.00 - 22.00 WIB">
+                </div>
+
+                <!-- INPUT GOOGLE MAPS (BARU) -->
+                <div class="form-group">
+                    <label for="mapsLink">Link Google Maps</label>
+                    <input type="url" id="mapsLink" name="mapsLink" placeholder="https://maps.google.com/...">
+                    <small style="color: var(--text-secondary); font-size: 0.85rem; display: block; margin-top: 0.3rem;">
+                        Salin link dari Google Maps untuk memudahkan pencarian lokasi
+                    </small>
+                    <div class="error-message" id="errorMaps">Format link Google Maps tidak valid</div>
+                </div>
+
+                <!-- UPLOAD GAMBAR (BARU) -->
+                <div class="form-group">
+                    <label for="gambar">Upload Foto Tempat</label>
+                    <input type="file" id="gambar" name="gambar" accept="image/jpeg,image/jpg,image/png,image/gif,image/webp">
+                    <small style="color: var(--text-secondary); font-size: 0.85rem; display: block; margin-top: 0.3rem;">
+                        Format: JPG, PNG, GIF, WEBP. Maksimal 5MB
+                    </small>
+                    <div class="image-preview" id="imagePreview"></div>
+                    <div class="error-message" id="errorGambar">Format atau ukuran file tidak valid</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="deskripsi">Deskripsi Tempat *</label>
+                    <textarea id="deskripsi" name="deskripsi" placeholder="Ceritakan tentang tempat ini, suasana, keunggulan, dan kenapa cocok untuk nugas/nongkrong..."></textarea>
+                    <div class="error-message" id="errorDeskripsi">Deskripsi harus diisi (minimal 20 karakter)</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="kontak">Kontak/Media Sosial (opsional)</label>
+                    <input type="text" id="kontak" name="kontak" placeholder="Contoh: @braincoffee.sby">
+                </div>
+
+                <button type="submit" class="submit-btn">Kirim Saran</button>
+
+                <div class="success-message" id="successMessage">
+                    <div class="success-content">
+                        <h3>Terima Kasih!</h3>
+                        <p>Saran tempat berhasil dikirim.</p>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Back Button -->
+        <div class="button-container">
+            <a href="beranda.html" class="back-button">← Kembali ke Beranda</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 WorkSpot UNESA | Membantu mahasiswa menemukan tempat nugas terbaik</p>
+    </footer>
+
+    <script src="web.js"></script>
+    <script src="saran-backend.js"></script>
+</body>
+</html>

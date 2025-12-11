@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Login</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        #result { margin-top: 20px; padding: 15px; background: #f5f5f5; border-radius: 5px; }
+        .error { color: red; }
+        .success { color: green; }
+    </style>
+</head>
+<body>
+    <h1>Test Login</h1>
+    
+    <div>
+        <label>Email:</label>
+        <input type="email" id="email" value="kenzacky1@gmail.com" style="width: 300px; padding: 5px;">
+    </div>
+    <br>
+    <div>
+        <label>Password:</label>
+        <input type="password" id="password" value="angely123" style="width: 300px; padding: 5px;">
+    </div>
+    <br>
+    
+    <button onclick="testLogin()" style="padding: 10px 20px;">Test Login</button>
+    <button onclick="testCheckAuth()" style="padding: 10px 20px;">Test Check Auth</button>
+    
+    <div id="result"></div>
+
+    <script>
+        async function testLogin() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            const formData = new FormData();
+            formData.append('action', 'login');
+            formData.append('email', email);
+            formData.append('password', password);
+
+            try {
+                console.log('Sending login request...');
+                
+                const response = await fetch('backend/auth.php', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                console.log('Response status:', response.status);
+                console.log('Response headers:', response.headers);
+                
+                const text = await response.text();
+                console.log('Response text:', text);
+                console.log('Response length:', text.length);
+                
+                if (!text) {
+                    document.getElementById('result').innerHTML = '<p class="error">ERROR: Response kosong!</p>';
+                    return;
+                }
+                
+                const data = JSON.parse(text);
+                console.log('Parsed data:', data);
+                
+                if (data.success) {
+                    document.getElementById('result').innerHTML = 
+                        '<p class="success">✅ LOGIN BERHASIL!</p>' +
+                        '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+                } else {
+                    document.getElementById('result').innerHTML = 
+                        '<p class="error">❌ Login Gagal: ' + data.message + '</p>' +
+                        '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+                }
+                
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('result').innerHTML = 
+                    '<p class="error">ERROR: ' + error.message + '</p>';
+            }
+        }
+        
+        async function testCheckAuth() {
+            const formData = new FormData();
+            formData.append('action', 'check_auth');
+
+            try {
+                const response = await fetch('backend/auth.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const text = await response.text();
+                console.log('Check auth response:', text);
+                
+                const data = JSON.parse(text);
+                
+                document.getElementById('result').innerHTML = 
+                    '<p>Check Auth Result:</p>' +
+                    '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+                
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('result').innerHTML = 
+                    '<p class="error">ERROR: ' + error.message + '</p>';
+            }
+        }
+    </script>
+</body>
+</html>

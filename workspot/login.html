@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login User - WorkSpot UNESA</title>
+    <link rel="stylesheet" href="web.css">
+    <style>
+        .login-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 2rem;
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .login-header h1 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .login-header p {
+            color: var(--text-secondary);
+        }
+        
+        .login-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .login-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+        
+        .login-form input[type="email"],
+        .login-form input[type="password"] {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid var(--bg-secondary);
+            border-radius: 10px;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+        
+        .login-form input[type="email"]:focus,
+        .login-form input[type="password"]:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        
+        /* Remember Me Checkbox Styles */
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 1.2rem 0;
+            padding: 12px;
+            background: rgba(76, 175, 80, 0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .remember-me:hover {
+            background: rgba(76, 175, 80, 0.15);
+        }
+        
+        .remember-me input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: var(--accent);
+            border-radius: 4px;
+        }
+        
+        .remember-me label {
+            color: var(--text-primary);
+            font-size: 14px;
+            cursor: pointer;
+            user-select: none;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .remember-me label::before {
+            content: "🔐";
+            font-size: 16px;
+        }
+        
+        .login-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .login-btn:hover {
+            transform: scale(1.02);
+        }
+        
+        .login-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .login-links {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        
+        .login-links a {
+            color: var(--accent);
+            text-decoration: none;
+            display: block;
+            margin: 0.5rem 0;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .login-links a:hover {
+            text-decoration: underline;
+            color: #66bb6a;
+            transform: translateX(5px);
+        }
+        
+        /* Style khusus untuk link "Belum punya akun" */
+        .login-links a:first-child {
+            color: #4CAF50;
+            font-size: 15px;
+            padding: 8px 16px;
+            background: rgba(76, 175, 80, 0.1);
+            border-radius: 8px;
+            display: inline-block;
+        }
+        
+        .login-links a:first-child:hover {
+            background: rgba(76, 175, 80, 0.2);
+            transform: scale(1.05);
+        }
+        
+        /* Style khusus untuk link "Kembali ke Beranda" */
+        .login-links a:last-child {
+            color: #b0bec5;
+            font-size: 14px;
+        }
+        
+        .login-links a:last-child:hover {
+            color: #ffffff;
+        }
+        
+        .error-message {
+            color: #f44336;
+            background: rgba(244, 67, 54, 0.1);
+            padding: 0.8rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #f44336;
+            display: none;
+        }
+        
+        .error-message.show {
+            display: block;
+        }
+        
+        .success-message {
+            color: #4CAF50;
+            background: rgba(76, 175, 80, 0.1);
+            padding: 0.8rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #4CAF50;
+            display: none;
+        }
+        
+        .success-message.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="images/logo work.png" alt="WorkSpot UNESA Logo">
+                <span>WorkSpot UNESA</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="beranda.html">Beranda</a></li>
+                <li><a href="detail.html">Detail</a></li>
+                <li><a href="saran.html">Saran</a></li>
+                <li><a href="tentang.html">Tentang Kami</a></li>
+                <li><button class="dark-mode-toggle" onclick="toggleDarkMode()">🌗 Dark Mode</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Login Container -->
+    <div class="container">
+        <div class="login-container">
+            <div class="login-header">
+                <h1>Login User</h1>
+                <p>Masuk untuk pengalaman yang lebih personal</p>
+            </div>
+            
+            <div class="error-message" id="errorMessage"></div>
+            
+            <form class="login-form" id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="nama@email.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="••••••••" required>
+                </div>
+                
+                <!-- Remember Me Checkbox -->
+                <div class="remember-me">
+                    <input type="checkbox" id="rememberMe" name="rememberMe">
+                    <label for="rememberMe">Ingat saya</label>
+                </div>
+                
+                <button type="submit" class="login-btn">Masuk</button>
+            </form>
+            
+            <div class="login-links">
+                <a href="register.html">Belum punya akun? Daftar</a>
+                <a href="beranda.html">← Kembali ke Beranda</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 WorkSpot UNESA | Membantu mahasiswa menemukan tempat nugas terbaik</p>
+    </footer>
+
+    <script src="login.js"></script>
+    <script src="web.js"></script>
+</body>
+</html>
